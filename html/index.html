@@ -6,6 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mango</title>
 </head>
+<script type="text/javascript">
+    var checkboxes = new Array();
+
+    function alertMessage() {
+        var name = document.getElementById("visitor").value;
+        var checkboxes = new Array();
+        addCheckbox();
+
+        var text = document.getElementById("visitor").value+"님, 저와 " + checkCheckbox() + "개의 취향이 같으시네요!";
+        alert(text);
+        clear();
+    }
+
+    function addCheckbox() {
+        checkboxes.push(document.getElementById("checkbox1").checked);
+        checkboxes.push(document.getElementById("checkbox2").checked);
+        checkboxes.push(document.getElementById("checkbox3").checked);
+        checkboxes.push(document.getElementById("checkbox4").checked);
+        checkboxes.push(document.getElementById("checkbox5").checked);
+    }
+
+    function checkCheckbox() {
+        var num = 0;
+        checkboxes.forEach(checkbox => {
+            if (checkbox) {
+                num++;
+            }
+        });
+
+        return num;
+    }
+
+    function clear() {
+        document.getElementById("visitor").value = "";
+        document.getElementById("checkbox1").checked = false;
+        document.getElementById("checkbox2").checked = false;
+        document.getElementById("checkbox3").checked = false;
+        document.getElementById("checkbox4").checked = false;
+        document.getElementById("checkbox5").checked = false;
+    }
+</script>
 <body>
     <div>
         <h2>자기 소개</h2>
@@ -102,18 +143,18 @@
         <form>
             <div>
                 이름:   
-                <input type="text"/>
+                <input type="text" id="visitor"/>
             </div>
             <div>
                 <p>본인 취향 영화</p>
-                <label><input type="checkbox" value="더 퍼스트 슬램덩크">더 퍼스트 슬램덩크</label>
-                <label><input type="checkbox" value="탑건: 매버릭">탑건: 매버릭</label>
-                <label><input type="checkbox" value="어벤져스: 엔드게임">어벤져스: 엔드게임</label>
-                <label><input type="checkbox" value="스파이더맨: 노 웨이 홈">스파이더맨: 노 웨이 홈</label>
-                <label><input type="checkbox" value="트루먼 쇼">트루먼 쇼</label>
+                <label><input type="checkbox" value="더 퍼스트 슬램덩크" id="checkbox1">더 퍼스트 슬램덩크</label>
+                <label><input type="checkbox" value="탑건: 매버릭" id="checkbox2">탑건: 매버릭</label>
+                <label><input type="checkbox" value="어벤져스: 엔드게임" id="checkbox3">어벤져스: 엔드게임</label>
+                <label><input type="checkbox" value="스파이더맨: 노 웨이 홈" id="checkbox4">스파이더맨: 노 웨이 홈</label>
+                <label><input type="checkbox" value="트루먼 쇼" id="checkbox5">트루먼 쇼</label>
             </div>
             <div>
-                <button type="button">등록</button>
+                <button type="button" onclick="alertMessage()">등록</button>
                 <button type="reset">취소</button>
             </div>
         </form>
